@@ -28,6 +28,8 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
@@ -38,6 +40,9 @@ import com.adobe.creativesdk.aviary.AdobeImageIntent;
 * This class exposes methods in Cordova that can be called from JavaScript.
 */
 public class ImageEditor extends CordovaPlugin {
+
+    private static final int JPEG = 0;                  // Take a picture of type JPEG
+    private static final int PNG = 1;                   // Take a picture of type PNG
 
     public CallbackContext callbackContext;
 
@@ -52,15 +57,24 @@ public class ImageEditor extends CordovaPlugin {
     public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
 
-        Log.d("Simon", "execute of ImageEditor");
-
         if (action.equals("edit")) {
-            Uri imageUri = Uri.parse(args.getString(0));
+            String imageStr = args.getString(0);
+            if (imageStr == null || "".equals(imageStr)) {
+                this.callbackContext.error("Image Path must be specified");
+            }
+            Uri imageUri = Uri.parse(imageStr);
 
-            Intent imageEditorIntent =
+            AdobeImageIntent.Builder builder =
                 new AdobeImageIntent.Builder(this.cordova.getActivity().getApplicationContext())
-                     .setData(imageUri)
-                     .build();
+                    .setData(imageUri);
+
+            if (ImageEditor.JPEG == args.getInt(1)) {
+                builder.withOutputFormat(Bitmap.CompressFormat.JPEG);
+            } else {
+                builder.withOutputFormat(Bitmap.CompressFormat.PNG);
+            }
+
+            Intent imageEditorIntent = builder.build();
 
             this.cordova.startActivityForResult((CordovaPlugin) this, imageEditorIntent, 1);
 

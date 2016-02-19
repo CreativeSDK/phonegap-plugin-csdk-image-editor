@@ -27,7 +27,34 @@ var exec = cordova.require('cordova/exec'),
 
 var ImageEditor = {
     edit: function(successCallback, errorCallback, imageUrl, options) {
-        exec(successCallback, errorCallback, 'ImageEditor', 'edit', [imageUrl]);
+        options = options || {};
+
+        var outputType = ImageEditor.getOutputType(imageUrl, options.outputType);
+
+        var args = [imageUrl, outputType];
+
+        exec(successCallback, errorCallback, 'ImageEditor', 'edit', args);
+    },
+    getOutputType: function(imageUrl, outputType) {
+        if (outputType !== null && outputType !== 'undefined' &&
+            (outputType === ImageEditor.OutputType.JPEG || outputType === ImageEditor.OutputType.PNG)) {
+            return outputType;
+        } else {
+            if (imageUrl.toLowerCase().endsWith('png')) {
+                return ImageEditor.OutputType.PNG;
+            } else {
+                return ImageEditor.OutputType.JPEG;
+            }
+         }
+    },
+    /**
+     * @enum {number}
+     */
+    OutputType:{
+        /** Return JPEG encoded image */
+        JPEG: 0,
+        /** Return PNG encoded image */
+        PNG: 1
     }
 };
 

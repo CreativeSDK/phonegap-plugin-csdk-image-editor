@@ -30,6 +30,58 @@ describe('phonegap-plugin-csdk-image-editor', function () {
             expect(ImageEditor.edit).toBeDefined();
             expect(typeof ImageEditor.edit === 'function').toBe(true);
         });
+
+        describe('Output Type', function() {
+            it('should contain a getOutputType function', function () {
+                expect(ImageEditor.getOutputType).toBeDefined();
+                expect(typeof ImageEditor.getOutputType === 'function').toBe(true);
+            });
+
+            it('should contain two OutputType constants', function () {
+                expect(ImageEditor.OutputType.JPEG).toBe(0);
+                expect(ImageEditor.OutputType.PNG).toBe(1);
+            });
+
+            it('should return correct output type', function () {
+                expect(ImageEditor.getOutputType('file.jpg')).toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.jpeg')).toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.JPG')).toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.JPEG')).toBe(ImageEditor.OutputType.JPEG);
+
+                expect(ImageEditor.getOutputType('file.png')).toBe(ImageEditor.OutputType.PNG);
+                expect(ImageEditor.getOutputType('file.PNG')).toBe(ImageEditor.OutputType.PNG);
+
+                expect(ImageEditor.getOutputType('file.jpg', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.jpeg', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.JPG', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.JPEG', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+
+                expect(ImageEditor.getOutputType('file.png', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+                expect(ImageEditor.getOutputType('file.PNG', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+
+
+                expect(ImageEditor.getOutputType('file.jpg', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+                expect(ImageEditor.getOutputType('file.jpeg', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+                expect(ImageEditor.getOutputType('file.JPG', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+                expect(ImageEditor.getOutputType('file.JPEG', ImageEditor.OutputType.PNG))
+                    .toBe(ImageEditor.OutputType.PNG);
+
+                expect(ImageEditor.getOutputType('file.png', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+                expect(ImageEditor.getOutputType('file.PNG', ImageEditor.OutputType.JPEG))
+                    .toBe(ImageEditor.OutputType.JPEG);
+            });
+
+        });
     });
 
     /*
