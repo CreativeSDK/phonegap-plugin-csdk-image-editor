@@ -22,17 +22,20 @@
 /* global cordova:false */
 /* globals window */
 
-var exec = cordova.require('cordova/exec'),
+var argscheck = require('cordova/argscheck'),
+    exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
 var ImageEditor = {
     edit: function(successCallback, errorCallback, imageUrl, options) {
+        var getValue = argscheck.getValue;
         options = options || {};
 
         var outputType = ImageEditor.getOutputType(imageUrl, options.outputType);
         var tools = ImageEditor.getTools(options.tools);
+        var quality = getValue(options.quality, 0);
 
-        var args = [imageUrl, outputType, tools];
+        var args = [imageUrl, outputType, tools, quality];
 
         exec(successCallback, errorCallback, 'ImageEditor', 'edit', args);
     },

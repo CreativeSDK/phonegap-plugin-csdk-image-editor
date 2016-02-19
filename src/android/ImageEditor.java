@@ -99,6 +99,7 @@ public class ImageEditor extends CordovaPlugin {
             // setup options
             setOutputType(builder, args.getInt(1));
             setToolsArray(builder, args.getJSONArray(2));
+            builder.withOutputQuality(args.getInt(3));
 
             Intent imageEditorIntent = builder.build();
 
