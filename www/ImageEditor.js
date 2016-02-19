@@ -25,16 +25,10 @@
 var exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
-var template = {
-    echo: function(successCallback, errorCallback, message, forceAsync) {
-        var action = 'echo';
-
-        if (forceAsync) {
-            action += 'Async';
-        }
-
-        exec(successCallback, errorCallback, 'Echo', action, [message]);
+var ImageEditor = {
+    edit: function(successCallback, errorCallback, imageUrl, options) {
+        exec(successCallback, errorCallback, 'ImageEditor', 'edit', [imageUrl]);
     }
 };
 
-module.exports = template;
+module.exports = ImageEditor;

@@ -5,7 +5,7 @@
  */
 
 var cordova = require('./helper/cordova'),
-    Template = require('../www/template'),
+    ImageEditor = require('../www/ImageEditor'),
     execSpy,
     execWin,
     options;
@@ -14,24 +14,25 @@ var cordova = require('./helper/cordova'),
  * Specification.
  */
 
-describe('cordova-plugin-template', function () {
+describe('phonegap-plugin-csdk-image-editor', function () {
     beforeEach(function () {
         execWin = jasmine.createSpy();
         execSpy = spyOn(cordova.required, 'cordova/exec').andCallFake(execWin);
     });
 
-    describe('Template', function () {
+    describe('Image Editor', function () {
         it('should exist', function () {
-            expect(Template).toBeDefined();
-            expect(typeof Template === 'object').toBe(true);
+            expect(ImageEditor).toBeDefined();
+            expect(typeof ImageEditor === 'object').toBe(true);
         });
 
-        it('should contain a echo function', function () {
-            expect(Template.echo).toBeDefined();
-            expect(typeof Template.echo === 'function').toBe(true);
+        it('should contain a edit function', function () {
+            expect(ImageEditor.edit).toBeDefined();
+            expect(typeof ImageEditor.edit === 'function').toBe(true);
         });
     });
 
+    /*
     describe('Template instance', function () {
         describe('cordova.exec', function () {
             it('should call cordova.exec on next process tick', function (done) {
@@ -67,4 +68,5 @@ describe('cordova-plugin-template', function () {
             });
         });
     });
+    */
 });

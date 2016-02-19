@@ -20,33 +20,33 @@
 -->
 
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
-           id="cordova-plugin-template"
+           id="phonegap-plugin-csdk-image-editor"
       version="0.0.1">
-    <name>Template</name>
+    <name>phonegap-plugin-csdk-image-editor</name>
 
-    <js-module src="www/template.js" name="Template">
-        <clobbers target="Template" />
+    <js-module src="www/ImageEditor.js" name="ImageEditor">
+        <clobbers target="ImageEditor" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Echo" >
-                <param name="android-package" value="org.apache.cordova.test.Echo"/>
+            <feature name="ImageEditor" >
+                <param name="android-package" value="com.adobe.phonegap.csdk.ImageEditor"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Echo.java" target-dir="src/org/apache/cordova/test" />
+        <source-file src="src/android/ImageEditor.java" target-dir="src/com/adobe/phonegap/csdk" />
     </platform>
 
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="Echo">
-                <param name="ios-package" value="CDVEcho"/>
+            <feature name="ImageEditor">
+                <param name="ios-package" value="CDVImageEditor"/>
             </feature>
         </config-file>
-        <source-file src="src/ios/CDVEcho.m" />
+        <source-file src="src/ios/CDVImageEditor.m" />
     </platform>
 
 </plugin>
