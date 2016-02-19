@@ -30,8 +30,9 @@ var ImageEditor = {
         options = options || {};
 
         var outputType = ImageEditor.getOutputType(imageUrl, options.outputType);
+        var tools = ImageEditor.getTools(options.tools);
 
-        var args = [imageUrl, outputType];
+        var args = [imageUrl, outputType, tools];
 
         exec(successCallback, errorCallback, 'ImageEditor', 'edit', args);
     },
@@ -47,6 +48,17 @@ var ImageEditor = {
             }
          }
     },
+    getTools: function(tools) {
+        var validTools = [];
+        if (tools) {
+            for(var i=0; i<tools.length; i++) {
+                if (tools[i] >= 0 && tools[i] <= 20) {
+                    validTools.push(tools[i]);
+                }
+            }
+        }
+        return validTools;
+    },
     /**
      * @enum {number}
      */
@@ -55,6 +67,32 @@ var ImageEditor = {
         JPEG: 0,
         /** Return PNG encoded image */
         PNG: 1
+    },
+    /**
+     * @enum {number}
+     */
+    ToolType:{
+        SHARPNESS: 0,
+        EFFECTS: 1,
+        REDEYE: 2,
+        CROP: 3,
+        WHITEN: 4,
+        DRAW: 5,
+        STICKERS: 6,
+        TEXT: 7,
+        BLEMISH: 8,
+        MEME: 9,
+        ORIENTATION: 10,
+        ENHANCE: 11,
+        FRAMES: 12,
+        SPLASH: 13,
+        FOCUS: 14,
+        BLUR: 15,
+        VIGNETTE: 16,
+        LIGHTING: 17,
+        COLOR: 18,
+        OVERLAYS: 19,
+        ADJUST: 20
     }
 };
 

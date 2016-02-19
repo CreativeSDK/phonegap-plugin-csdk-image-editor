@@ -34,15 +34,43 @@ import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
+import com.adobe.creativesdk.aviary.internal.filters.ToolLoaderFactory;
 
 /**
 * This class exposes methods in Cordova that can be called from JavaScript.
 */
 public class ImageEditor extends CordovaPlugin {
+    private static final String LOG_TAG = "CreativeSDK_ImageEditor";
 
+    // Output types
     private static final int JPEG = 0;                  // Take a picture of type JPEG
     private static final int PNG = 1;                   // Take a picture of type PNG
+
+    // Tool types
+    private static final int SHARPNESS = 0;
+    private static final int EFFECTS = 1;
+    private static final int REDEYE = 2;
+    private static final int CROP = 3;
+    private static final int WHITEN = 4;
+    private static final int DRAW = 5;
+    private static final int STICKERS = 6;
+    private static final int TEXT = 7;
+    private static final int BLEMISH = 8;
+    private static final int MEME = 9;
+    private static final int ORIENTATION = 10;
+    private static final int ENHANCE = 11;
+    private static final int FRAMES = 12;
+    private static final int SPLASH = 13;
+    private static final int FOCUS = 14;
+    private static final int BLUR = 15;
+    private static final int VIGNETTE = 16;
+    private static final int LIGHTING = 17;
+    private static final int COLOR = 18;
+    private static final int OVERLAYS = 19;
+    private static final int ADJUST = 20;
 
     public CallbackContext callbackContext;
 
@@ -68,11 +96,9 @@ public class ImageEditor extends CordovaPlugin {
                 new AdobeImageIntent.Builder(this.cordova.getActivity().getApplicationContext())
                     .setData(imageUri);
 
-            if (ImageEditor.JPEG == args.getInt(1)) {
-                builder.withOutputFormat(Bitmap.CompressFormat.JPEG);
-            } else {
-                builder.withOutputFormat(Bitmap.CompressFormat.PNG);
-            }
+            // setup options
+            setOutputType(builder, args.getInt(1));
+            setToolsArray(builder, args.getJSONArray(2));
 
             Intent imageEditorIntent = builder.build();
 
@@ -95,15 +121,109 @@ public class ImageEditor extends CordovaPlugin {
      * @param resultCode        The integer result code returned by the child activity through its setResult().
      * @param intent            An Intent, which can return result data to the caller (various data can be attached to Intent "extras").
      */
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case 1:
-                    Uri editedImageUri = data.getData();
+                    Uri editedImageUri = intent.getData();
                     this.callbackContext.success(editedImageUri.toString());
 
                     break;
             }
         }
+    }
+
+    private void setOutputType(AdobeImageIntent.Builder builder, int outputType) {
+        if (ImageEditor.JPEG == outputType) {
+            builder.withOutputFormat(Bitmap.CompressFormat.JPEG);
+        } else {
+            builder.withOutputFormat(Bitmap.CompressFormat.PNG);
+        }
+    }
+
+    private void setToolsArray(AdobeImageIntent.Builder builder, JSONArray toolsArray) {
+        try {
+            ToolLoaderFactory.Tools[] tools = createToolsArray(toolsArray);
+            if (tools.length > 0) {
+                builder.withToolList(tools);
+            }
+        } catch(JSONException e) {
+            Log.e(LOG_TAG, e.getLocalizedMessage(), e);
+        }
+    }
+
+    private ToolLoaderFactory.Tools[] createToolsArray(JSONArray toolsArray) throws JSONException {
+        ArrayList<ToolLoaderFactory.Tools> tools = new ArrayList<ToolLoaderFactory.Tools>();
+        for (int i=0; i<toolsArray.length(); i++) {
+            int tool = toolsArray.getInt(i);
+            if (tool >= 0 && tool <= 20) {
+                switch(tool) {
+                    case SHARPNESS:
+                        tools.add(ToolLoaderFactory.Tools.SHARPNESS);
+                        break;
+                    case EFFECTS:
+                        tools.add(ToolLoaderFactory.Tools.EFFECTS);
+                        break;
+                    case REDEYE:
+                        tools.add(ToolLoaderFactory.Tools.REDEYE);
+                        break;
+                    case CROP:
+                        tools.add(ToolLoaderFactory.Tools.CROP);
+                        break;
+                    case WHITEN:
+                        tools.add(ToolLoaderFactory.Tools.WHITEN);
+                        break;
+                    case DRAW:
+                        tools.add(ToolLoaderFactory.Tools.DRAW);
+                        break;
+                    case STICKERS:
+                        tools.add(ToolLoaderFactory.Tools.STICKERS);
+                        break;
+                    case TEXT:
+                        tools.add(ToolLoaderFactory.Tools.TEXT);
+                        break;
+                    case BLEMISH:
+                        tools.add(ToolLoaderFactory.Tools.BLEMISH);
+                        break;
+                    case MEME:
+                        tools.add(ToolLoaderFactory.Tools.MEME);
+                        break;
+                    case ORIENTATION:
+                        tools.add(ToolLoaderFactory.Tools.ORIENTATION);
+                        break;
+                    case ENHANCE:
+                        tools.add(ToolLoaderFactory.Tools.ENHANCE);
+                        break;
+                    case FRAMES:
+                        tools.add(ToolLoaderFactory.Tools.FRAMES);
+                        break;
+                    case SPLASH:
+                        tools.add(ToolLoaderFactory.Tools.SPLASH);
+                        break;
+                    case FOCUS:
+                        tools.add(ToolLoaderFactory.Tools.FOCUS);
+                        break;
+                    case BLUR:
+                        tools.add(ToolLoaderFactory.Tools.BLUR);
+                        break;
+                    case VIGNETTE:
+                        tools.add(ToolLoaderFactory.Tools.VIGNETTE);
+                        break;
+                    case LIGHTING:
+                        tools.add(ToolLoaderFactory.Tools.LIGHTING);
+                        break;
+                    case COLOR:
+                        tools.add(ToolLoaderFactory.Tools.COLOR);
+                        break;
+                    case OVERLAYS:
+                        tools.add(ToolLoaderFactory.Tools.OVERLAYS);
+                        break;
+                    case ADJUST:
+                        tools.add(ToolLoaderFactory.Tools.ADJUST);
+                        break;
+                }
+            }
+        }
+        return tools.toArray(new ToolLoaderFactory.Tools[tools.size()]);
     }
 }
