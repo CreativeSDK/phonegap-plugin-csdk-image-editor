@@ -24,6 +24,8 @@
       version="0.0.1">
     <name>phonegap-plugin-csdk-image-editor</name>
 
+    <dependency id="phonegap-plugin-csdk-client-auth" url="https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth" />
+
     <js-module src="www/ImageEditor.js" name="ImageEditor">
         <clobbers target="ImageEditor" />
     </js-module>
