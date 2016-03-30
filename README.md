@@ -19,7 +19,11 @@
 #
 -->
 
-cordova-plugin-template
+phonegap-plugin-csdk-image-editor
 ------------------------
 
-This repo is a template for starting a new plugin.
+To add to your app:
+
+```
+phonegap plugin add --save https://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor
+```
