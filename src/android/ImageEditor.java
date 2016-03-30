@@ -131,6 +131,8 @@ public class ImageEditor extends CordovaPlugin {
 
                     break;
             }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            this.callbackContext.error("Editor Canceled");
         }
     }
 
