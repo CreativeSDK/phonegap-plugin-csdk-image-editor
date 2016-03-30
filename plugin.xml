@@ -48,7 +48,24 @@
                 <param name="ios-package" value="CDVImageEditor"/>
             </feature>
         </config-file>
+        <header-file src="src/ios/CDVImageEditor.h" />
         <source-file src="src/ios/CDVImageEditor.m" />
+
+        <resource-file src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework/Versions/A/Resources/AdobeCreativeSDKImageResources.bundle" />
+        <framework src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework" custom="true" />
+
+		<framework src="MobileCoreServices.framework" />
+        <framework src="libc++.dylib" />
+        <framework src="libz.dylib" />
+        <framework src="Accelerate.framework" />
+        <framework src="CoreData.framework" />
+        <framework src="libsqlite3.0.dylib" />
+        <framework src="Foundation.framework" />
+        <framework src="MessageUI.framework" />
+        <framework src="OpenGLES.framework" />
+        <framework src="QuartzCore.framework" />
+        <framework src="StoreKit.framework" />
+        <framework src="UIKit.framework" />
     </platform>
 
 </plugin>

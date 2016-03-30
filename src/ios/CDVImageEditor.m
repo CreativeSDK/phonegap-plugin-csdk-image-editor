@@ -17,32 +17,39 @@
  under the License.
  */
 
-#import <Cordova/CDV.h>
+#import <AdobeCreativeSDKImage/AdobeCreativeSDKImage.h>
+#import "CDVImageEditor.h"
 
-@interface CDVEcho : CDVPlugin
-@end
+@implementation CDVImageEditor
 
-@implementation CDVEcho
+@synthesize callbackId;
 
-- (void)echo:(CDVInvokedUrlCommand*)command
+- (void)edit:(CDVInvokedUrlCommand*)command
 {
-    id message = [command.arguments objectAtIndex:0];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+    self.callbackId = command.callbackId;
 
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    NSString *imageUri = [command.arguments objectAtIndex:0];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUri]];
+    UIImage *image = [UIImage imageWithData:imageData];
+
+    AdobeUXImageEditorViewController *editorController =
+        [[AdobeUXImageEditorViewController alloc] initWithImage:image];
+	[editorController setDelegate:self];
+	[self.viewController presentViewController:editorController animated:YES completion:nil];
 }
 
-- (void)echoAsyncHelper:(NSArray*)args
+- (void)photoEditor:(AdobeUXImageEditorViewController *)editor finishedWithImage:(UIImage *)image
 {
-    [self.commandDelegate sendPluginResult:[args objectAtIndex:0] callbackId:[args objectAtIndex:1]];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+    [self.viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)echoAsync:(CDVInvokedUrlCommand*)command
+- (void)photoEditorCanceled:(AdobeUXImageEditorViewController *)editor
 {
-    id message = [command.arguments objectAtIndex:0];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
-
-    [self performSelector:@selector(echoAsyncHelper:) withObject:[NSArray arrayWithObjects:pluginResult, command.callbackId, nil] afterDelay:0];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+    [self.viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
