@@ -36,7 +36,7 @@
 
     self.imageUri = [command.arguments objectAtIndex:0];
     self.encodingType = [command.arguments objectAtIndex:1];
-    //  = [command.arguments objectAtIndex:3];
+    NSMutableArray *tools = [self createToolArray:[command.arguments objectAtIndex:2]];
     self.quality = [[command.arguments objectAtIndex:3] integerValue] == 0 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
 
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUri]];
@@ -45,6 +45,7 @@
     AdobeUXImageEditorViewController *editorController =
         [[AdobeUXImageEditorViewController alloc] initWithImage:image];
 	[editorController setDelegate:self];
+    [AdobeImageEditorCustomization setToolOrder:tools];
 	[self.viewController presentViewController:editorController animated:YES completion:nil];
 }
 
@@ -102,6 +103,90 @@
     }
 
     return data;
+}
+
+- (NSArray*) createToolArray:(NSArray*)toolOptions
+{
+    NSMutableArray *tools = [NSMutableArray array];
+
+    for (NSNumber *tempNumber in toolOptions) {
+        int toolId = [tempNumber integerValue];
+        NSLog(@"Single element: %d", toolId);
+        switch(toolId){
+            case ToolTypeSharpness:
+                [tools addObject: kAdobeImageEditorSharpness];
+                break;
+            case ToolTypeEffects:
+                [tools addObject: kAdobeImageEditorEffects];
+                break;
+            case ToolTypeRedeye:
+                [tools addObject: kAdobeImageEditorRedeye];
+                break;
+            case ToolTypeCrop:
+                [tools addObject: kAdobeImageEditorCrop];
+                break;
+            case ToolTypeWhiten:
+                [tools addObject: kAdobeImageEditorWhiten];
+                break;
+            case ToolTypeDraw:
+                [tools addObject: kAdobeImageEditorDraw];
+                break;
+            case ToolTypeStickers:
+                [tools addObject: kAdobeImageEditorStickers];
+                break;
+            case ToolTypeText:
+                [tools addObject: kAdobeImageEditorText];
+                break;
+            case ToolTypeBlemish:
+                [tools addObject: kAdobeImageEditorBlemish];
+                break;
+            case ToolTypeMeme:
+                [tools addObject: kAdobeImageEditorMeme];
+                break;
+            case ToolTypeOrientation:
+                [tools addObject: kAdobeImageEditorOrientation];
+                break;
+            case ToolTypeEnhance:
+                [tools addObject: kAdobeImageEditorEnhance];
+                break;
+            case ToolTypeFrames:
+                [tools addObject: kAdobeImageEditorFrames];
+                break;
+            case ToolTypeSplash:
+                [tools addObject: kAdobeImageEditorSplash];
+                break;
+            case ToolTypeFocus:
+                [tools addObject: kAdobeImageEditorFocus];
+                break;
+            case ToolTypeBlur:
+                [tools addObject: kAdobeImageEditorBlur];
+                break;
+            case ToolTypeVignette:
+                [tools addObject: kAdobeImageEditorVignette];
+                break;
+            case ToolTypeLighting:
+                [tools addObject: kAdobeImageEditorLightingAdjust];
+                break;
+            case ToolTypeColor:
+                [tools addObject: kAdobeImageEditorColorAdjust];
+                break;
+            case ToolTypeOverlays:
+                [tools addObject: kAdobeImageEditorOverlay];
+                break;
+            /*
+             * apparently the adjust tool is only on Android
+             *
+            case ToolTypeAdjust:
+                [tools addObject: xxxxx];
+                break;
+             */
+            default:
+                // Ignore any tool not from the above
+                break;
+        }
+    }
+
+    return [tools copy];
 }
 
 @end

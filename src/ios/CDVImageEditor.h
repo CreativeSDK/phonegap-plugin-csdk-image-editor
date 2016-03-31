@@ -6,6 +6,32 @@ enum CDVEncodingType {
 };
 typedef NSUInteger CDVEncodingType;
 
+enum CDVToolType {
+    ToolTypeSharpness = 0,
+    ToolTypeEffects,
+    ToolTypeRedeye,
+    ToolTypeCrop,
+    ToolTypeWhiten,
+    ToolTypeDraw,
+    ToolTypeStickers,
+    ToolTypeText,
+    ToolTypeBlemish,
+    ToolTypeMeme,
+    ToolTypeOrientation,
+    ToolTypeEnhance,
+    ToolTypeFrames,
+    ToolTypeSplash,
+    ToolTypeFocus,
+    ToolTypeBlur,
+    ToolTypeVignette,
+    ToolTypeLighting,
+    ToolTypeColor,
+    ToolTypeOverlays,
+    ToolTypeAdjust
+};
+typedef NSUInteger CDVToolType;
+
+
 @interface CDVImageEditor : CDVPlugin
 {
     NSString *callbackId;
