@@ -27,12 +27,18 @@
 
 @synthesize callbackId;
 @synthesize imageUri;
+@synthesize encodingType;
+@synthesize quality;
 
 - (void)edit:(CDVInvokedUrlCommand*)command
 {
     self.callbackId = command.callbackId;
 
     self.imageUri = [command.arguments objectAtIndex:0];
+    self.encodingType = [command.arguments objectAtIndex:1];
+    //  = [command.arguments objectAtIndex:3];
+    self.quality = [[command.arguments objectAtIndex:3] integerValue] == 0 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
+
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUri]];
     UIImage *image = [UIImage imageWithData:imageData];
 
@@ -45,9 +51,9 @@
 - (void)photoEditor:(AdobeUXImageEditorViewController *)editor finishedWithImage:(UIImage *)image
 {
     CDVPluginResult *pluginResult = nil;
+    NSString *extension =  [self.encodingType integerValue] == EncodingTypePNG ? @"png" : @"jpg";
     NSData* data = [self processImage:image];
     if (data) {
-        NSString* extension = [self.imageUri pathExtension];
         NSString* filePath = [self tempFilePath:extension];
         NSError* err = nil;
 
@@ -88,12 +94,11 @@
 - (NSData*)processImage:(UIImage*)image
 {
     NSData* data = nil;
-    NSString* extension = [self.imageUri pathExtension];
 
-    if (isEqualIgnoreCaseToString(extension, @"png")) {
+    if ([self.encodingType integerValue] == EncodingTypePNG) {
         data = UIImagePNGRepresentation(image);
-    } else if (isEqualIgnoreCaseToString(extension, @"jpg") || isEqualIgnoreCaseToString(extension, @"jpeg")) {
-        data = UIImageJPEGRepresentation(image, 1.0);
+    } else if ([self.encodingType integerValue] == EncodingTypeJPEG) {
+        data = UIImageJPEGRepresentation(image, [self.quality floatValue] / 100.0f);
     }
 
     return data;
