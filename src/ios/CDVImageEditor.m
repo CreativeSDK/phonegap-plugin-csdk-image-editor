@@ -45,7 +45,9 @@
     AdobeUXImageEditorViewController *editorController =
         [[AdobeUXImageEditorViewController alloc] initWithImage:image];
 	[editorController setDelegate:self];
-    [AdobeImageEditorCustomization setToolOrder:tools];
+    if ([tools count] > 0) {
+        [AdobeImageEditorCustomization setToolOrder:tools];        
+    }
 	[self.viewController presentViewController:editorController animated:YES completion:nil];
 }
 
