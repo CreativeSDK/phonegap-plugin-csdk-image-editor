@@ -27,13 +27,13 @@
     <!-- dependency id="phonegap-plugin-csdk-client-auth" url="https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth" / -->
 
     <js-module src="www/ImageEditor.js" name="ImageEditor">
-        <clobbers target="ImageEditor" />
+        <clobbers target="CSDKImageEditor" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="ImageEditor" >
+            <feature name="CSDKImageEditor" >
                 <param name="android-package" value="com.adobe.phonegap.csdk.ImageEditor"/>
             </feature>
         </config-file>
@@ -44,7 +44,7 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="ImageEditor">
+            <feature name="CSDKImageEditor">
                 <param name="ios-package" value="CDVImageEditor"/>
             </feature>
         </config-file>

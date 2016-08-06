@@ -26,28 +26,28 @@ var argscheck = require('cordova/argscheck'),
     exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
-var ImageEditor = {
+var CSDKImageEditor = {
     edit: function(successCallback, errorCallback, imageUrl, options) {
         var getValue = argscheck.getValue;
         options = options || {};
 
-        var outputType = ImageEditor.getOutputType(imageUrl, options.outputType);
-        var tools = ImageEditor.getTools(options.tools);
+        var outputType = CSDKImageEditor.getOutputType(imageUrl, options.outputType);
+        var tools = CSDKImageEditor.getTools(options.tools);
         var quality = getValue(options.quality, 0);
 
         var args = [imageUrl, outputType, tools, quality];
 
-        exec(successCallback, errorCallback, 'ImageEditor', 'edit', args);
+        exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
     getOutputType: function(imageUrl, outputType) {
         if (outputType !== null && outputType !== 'undefined' &&
-            (outputType === ImageEditor.OutputType.JPEG || outputType === ImageEditor.OutputType.PNG)) {
+            (outputType === CSDKImageEditor.OutputType.JPEG || outputType === CSDKImageEditor.OutputType.PNG)) {
             return outputType;
         } else {
             if (imageUrl.toLowerCase().endsWith('png')) {
-                return ImageEditor.OutputType.PNG;
+                return CSDKImageEditor.OutputType.PNG;
             } else {
-                return ImageEditor.OutputType.JPEG;
+                return CSDKImageEditor.OutputType.JPEG;
             }
          }
     },
@@ -99,4 +99,4 @@ var ImageEditor = {
     }
 };
 
-module.exports = ImageEditor;
+module.exports = CSDKImageEditor;
