@@ -126,7 +126,7 @@ public class ImageEditor extends CordovaPlugin {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case 1:
-                    Uri editedImageUri = intent.getData();
+                    Uri editedImageUri = intent.getParcelableExtra(AdobeImageIntent.EXTRA_OUTPUT_URI);
                     this.callbackContext.success(editedImageUri.toString());
 
                     break;

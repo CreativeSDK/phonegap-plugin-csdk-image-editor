@@ -21,7 +21,7 @@
 
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
            id="phonegap-plugin-csdk-image-editor"
-      version="0.0.1">
+      version="0.0.2">
     <name>phonegap-plugin-csdk-image-editor</name>
 
     <!-- dependency id="phonegap-plugin-csdk-client-auth" url="https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth" / -->
@@ -37,6 +37,9 @@
                 <param name="android-package" value="com.adobe.phonegap.csdk.ImageEditor"/>
             </feature>
         </config-file>
+
+        <framework src="com.adobe.creativesdk:image:4.6.3+"/>
+        <framework src="com.localytics.android:library:3.8.0+"/>
 
         <source-file src="src/android/ImageEditor.java" target-dir="src/com/adobe/phonegap/csdk" />
     </platform>
