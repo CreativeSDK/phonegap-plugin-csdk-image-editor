@@ -37,7 +37,7 @@
     self.imageUri = [command.arguments objectAtIndex:0];
     self.encodingType = [command.arguments objectAtIndex:1];
     NSMutableArray *tools = [self createToolArray:[command.arguments objectAtIndex:2]];
-    self.quality = [[command.arguments objectAtIndex:3] integerValue] == 0 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
+    self.quality = [[command.arguments objectAtIndex:3] integerValue] != 100 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
 
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUri]];
     UIImage *image = [UIImage imageWithData:imageData];
@@ -46,7 +46,7 @@
         [[AdobeUXImageEditorViewController alloc] initWithImage:image];
 	[editorController setDelegate:self];
     if ([tools count] > 0) {
-        [AdobeImageEditorCustomization setToolOrder:tools];        
+        [AdobeImageEditorCustomization setToolOrder:tools];
     }
 	[self.viewController presentViewController:editorController animated:YES completion:nil];
 }
