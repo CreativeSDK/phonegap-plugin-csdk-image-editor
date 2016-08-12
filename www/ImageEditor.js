@@ -22,7 +22,7 @@
 /* global cordova:false */
 /* globals window */
 
-var argscheck = require('cordova/argscheck'),
+var argscheck = cordova.require('cordova/argscheck'),
     exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
