@@ -104,6 +104,7 @@ public class ImageEditor extends CordovaPlugin {
             builder.withNoExitConfirmation(args.getBoolean(4));
             builder.withOutputSize(MegaPixels.valueOf("Mp"+args.getString(5)));
             builder.saveWithNoChanges(args.getBoolean(6));
+            builder.withVibrationEnabled(args.getBoolean(7));
 
             Intent imageEditorIntent = builder.build();
 

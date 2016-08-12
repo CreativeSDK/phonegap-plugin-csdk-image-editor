@@ -50,8 +50,9 @@ var CSDKImageEditor = {
         var confirmExit = getValue(options.confirmExit, false);
         var outputSize = CSDKImageEditor.getOutputSize(options.outputSize);
         var saveWithNoChanges = getValue(options.saveWithNoChanges, true);
+        var vibrate = getValue(options.vibrate, false);
 
-        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize, saveWithNoChanges];
+        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize, saveWithNoChanges, vibrate];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
