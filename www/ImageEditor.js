@@ -48,8 +48,9 @@ var CSDKImageEditor = {
         var tools = CSDKImageEditor.getTools(options.tools);
         var quality = getValue(options.quality, 100);
         var confirmExit = getValue(options.confirmExit, false);
+        var outputSize = CSDKImageEditor.getOutputSize(options.outputSize);
 
-        var args = [imageUrl, outputType, tools, quality, confirmExit];
+        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
@@ -77,6 +78,12 @@ var CSDKImageEditor = {
             }
         }
         return validTools;
+    },
+    getOutputSize: function(size) {
+        if (!size || size < 0 || size > 30) {
+            return 0;
+        }
+        return size;
     },
     /**
      * @readonly
