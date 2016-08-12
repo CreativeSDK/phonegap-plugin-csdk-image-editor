@@ -26,7 +26,19 @@ var argscheck = require('cordova/argscheck'),
     exec = cordova.require('cordova/exec'),
     utils = cordova.require('cordova/utils');
 
+/**
+    @description A global object that lets you interact with the Creative SDK Image Editor.
+    @global
+*/
 var CSDKImageEditor = {
+    /** 
+     * @description Launches the Image Editor. 
+     * @function edit 
+     * @callback {!successCallback} successCallback
+     * @callback {!errorCallback} errorCallback
+     * @param {!string} imageUrl URL of the image to be edited.
+     * @param {?Object} options An object containing optional property/value pairs.
+     */
     edit: function(successCallback, errorCallback, imageUrl, options) {
         var getValue = argscheck.getValue;
         options = options || {};
@@ -63,6 +75,7 @@ var CSDKImageEditor = {
         return validTools;
     },
     /**
+     * @readonly
      * @enum {number}
      */
     OutputType:{
@@ -72,6 +85,7 @@ var CSDKImageEditor = {
         PNG: 1
     },
     /**
+     * @readonly
      * @enum {number}
      */
     ToolType:{
@@ -97,6 +111,18 @@ var CSDKImageEditor = {
         OVERLAYS: 19,
         ADJUST: 20
     }
+    /**
+     * @description A callback to be used upon successful editing of an image.
+     *
+     * @callback successCallback
+     * @param {string} newUrl - The URL of the new edited image.
+     */
+    /**
+     * @description A callback to handle errors when attempting to edit an image.
+     *
+     * @callback errorCallback
+     * @param {string} error
+     */
 };
 
 module.exports = CSDKImageEditor;
