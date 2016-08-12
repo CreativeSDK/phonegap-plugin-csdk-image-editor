@@ -106,6 +106,7 @@ public class ImageEditor extends CordovaPlugin {
             builder.saveWithNoChanges(args.getBoolean(6));
             builder.withVibrationEnabled(args.getBoolean(7));
             builder.withAccentColor(args.getInt(8));
+            builder.withPreviewSize(args.getInt(9));
 
             Intent imageEditorIntent = builder.build();
 

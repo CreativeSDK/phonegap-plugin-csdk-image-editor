@@ -31,10 +31,10 @@ var argscheck = cordova.require('cordova/argscheck'),
     @global
 */
 var CSDKImageEditor = {
-    /** 
-     * @description Launches the Image Editor. 
+    /**
+     * @description Launches the Image Editor.
      * @function edit
-     * @memberof CSDKImageEditor 
+     * @memberof CSDKImageEditor
      * @param {!successCallback} successCallback - See type definition.
      * @param {!errorCallback} errorCallback - See type definition.
      * @param {!string} imageUrl URL of the image to be edited.
@@ -52,8 +52,10 @@ var CSDKImageEditor = {
         var saveWithNoChanges = getValue(options.saveWithNoChanges, true);
         var vibrate = getValue(options.vibrate, false);
         var color = getValue(options.color, -16777216);
+        var previewSize = getValue(options.previewSize, 0);
 
-        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize, saveWithNoChanges, vibrate, color];
+        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize,
+            saveWithNoChanges, vibrate, color, previewSize];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
