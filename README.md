@@ -158,3 +158,56 @@ var app = {
 
 <a name="api"></a>
 # API guide
+
+## Global object
+
+`CSDKImageEditor`
+
+## Functions
+
+`CSDKImageEditor.edit(successCallback, errorCallback, imageUrl[, options])`
+
+- `successCallback()` receives one argument `newUrl`, which is the edited image
+- `errorCallback()` receives one argument `error`
+- `imageUrl` is a string URL location of the original image you want to edit
+- `options` is an optional object you can pass. Will be set to `{}` if you don't pass this argument
+
+## Options
+
+You can pass the following property/value pairs in your `options` object:
+
+- `outputType`
+	This property forces the specific output type that you set. 
+
+	When no `outputType` option is passed, the default is to output the same file type that you pass in.
+
+	- `CSDKImageEditor.OutputType.PNG`
+	- `CSDKImageEditor.OutputType.JPEG`
+- `tools`
+	This property lets you restrict the set of tools that are available to the user. The value for this property must be passed as an array of `CSDKImageEditor.ToolType` values.
+
+	When no `tools` option is passed, the default is to display all tools. 
+
+    - `CSDKImageEditor.ToolType.SHARPNESS`
+    - `CSDKImageEditor.ToolType.EFFECTS`
+    - `CSDKImageEditor.ToolType.REDEYE`
+    - `CSDKImageEditor.ToolType.CROP`
+    - `CSDKImageEditor.ToolType.WHITEN`
+    - `CSDKImageEditor.ToolType.DRAW`
+    - `CSDKImageEditor.ToolType.STICKERS`
+    - `CSDKImageEditor.ToolType.TEXT`
+    - `CSDKImageEditor.ToolType.BLEMISH`
+    - `CSDKImageEditor.ToolType.MEME`
+    - `CSDKImageEditor.ToolType.ORIENTATION`
+    - `CSDKImageEditor.ToolType.ENHANCE`
+    - `CSDKImageEditor.ToolType.FRAMES`
+    - `CSDKImageEditor.ToolType.SPLASH`
+    - `CSDKImageEditor.ToolType.FOCUS`
+    - `CSDKImageEditor.ToolType.BLUR`
+    - `CSDKImageEditor.ToolType.VIGNETTE`
+    - `CSDKImageEditor.ToolType.LIGHTING`
+    - `CSDKImageEditor.ToolType.COLOR`
+    - `CSDKImageEditor.ToolType.OVERLAYS`
+    - `CSDKImageEditor.ToolType.ADJUST`
+- `quality`
+	This property lets you set the quality of the output of the image. The value for this property can be a number from `1` to `100`, inclusive.
