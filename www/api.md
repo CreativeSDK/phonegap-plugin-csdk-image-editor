@@ -119,9 +119,9 @@ An object for configuring Image Editor behavior.
 **Kind**: global typedef  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| outputType | <code>[OutputType](#CSDKImageEditor.OutputType)</code> | Forces a specific output type. |
-| tools | <code>[Array.&lt;ToolType&gt;](#CSDKImageEditor.ToolType)</code> | Sets the list of tools that are available to the user, in the order you provide them within the array. |
-| quality | <code>number</code> | Sets the quality of the output of the image. Valid values are `1` to `100`, inclusive. |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| outputType | <code>[OutputType](#CSDKImageEditor.OutputType)</code> | <code>Same as original image</code> | Forces a specific output type. |
+| tools | <code>[Array.&lt;ToolType&gt;](#CSDKImageEditor.ToolType)</code> | <code>All tools</code> | Sets the list of tools that are available to the user, in the order you provide them within the array. |
+| quality | <code>number</code> | <code>100</code> | Sets the quality of the output of the image. Valid values are `1` to `100`, inclusive. |
 
