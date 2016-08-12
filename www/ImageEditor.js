@@ -51,8 +51,9 @@ var CSDKImageEditor = {
         var outputSize = CSDKImageEditor.getOutputSize(options.outputSize);
         var saveWithNoChanges = getValue(options.saveWithNoChanges, true);
         var vibrate = getValue(options.vibrate, false);
+        var color = getValue(options.color, -16777216);
 
-        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize, saveWithNoChanges, vibrate];
+        var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize, saveWithNoChanges, vibrate, color];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
