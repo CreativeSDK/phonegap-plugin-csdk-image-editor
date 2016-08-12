@@ -33,11 +33,12 @@ var argscheck = require('cordova/argscheck'),
 var CSDKImageEditor = {
     /** 
      * @description Launches the Image Editor. 
-     * @function edit 
-     * @callback {!successCallback} successCallback
-     * @callback {!errorCallback} errorCallback
+     * @function edit
+     * @memberof CSDKImageEditor 
+     * @param {!successCallback} successCallback - See type definition.
+     * @param {!errorCallback} errorCallback - See type definition.
      * @param {!string} imageUrl URL of the image to be edited.
-     * @param {?Object} options An object containing optional property/value pairs.
+     * @param {?Options} options An object containing optional property/value pairs.
      */
     edit: function(successCallback, errorCallback, imageUrl, options) {
         var getValue = argscheck.getValue;
@@ -51,6 +52,7 @@ var CSDKImageEditor = {
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
+    /** @private */
     getOutputType: function(imageUrl, outputType) {
         if (outputType !== null && outputType !== 'undefined' &&
             (outputType === CSDKImageEditor.OutputType.JPEG || outputType === CSDKImageEditor.OutputType.PNG)) {
@@ -63,6 +65,7 @@ var CSDKImageEditor = {
             }
          }
     },
+    /** @private */
     getTools: function(tools) {
         var validTools = [];
         if (tools) {
@@ -111,18 +114,27 @@ var CSDKImageEditor = {
         OVERLAYS: 19,
         ADJUST: 20
     }
-    /**
-     * @description A callback to be used upon successful editing of an image.
-     *
-     * @callback successCallback
-     * @param {string} newUrl - The URL of the new edited image.
-     */
-    /**
-     * @description A callback to handle errors when attempting to edit an image.
-     *
-     * @callback errorCallback
-     * @param {string} error
-     */
 };
+
+/**
+ * @description A callback to be used upon successful editing of an image.
+ *
+ * @callback successCallback
+ * @param {string} newUrl - The URL of the new edited image.
+ */
+
+/**
+ * @description A callback to handle errors when attempting to edit an image.
+ *
+ * @callback errorCallback
+ * @param {Object} error - Error object.
+ */
+
+/**
+ * @typedef {Object} Options - An object for configuring Image Editor behavior.
+ * @property {CSDKImageEditor.OutputType} outputType - Forces a specific output type.
+ * @property {CSDKImageEditor.ToolType[]} tools - Sets the list of tools that are available to the user, in the order you provide them within the array.
+ * @property {number} quality - Sets the quality of the output of the image. Valid values are `1` to `100`, inclusive.
+ */
 
 module.exports = CSDKImageEditor;
