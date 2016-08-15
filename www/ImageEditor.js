@@ -84,6 +84,7 @@ var CSDKImageEditor = {
         }
         return validTools;
     },
+    /** @private */
     getOutputSize: function(size) {
         if (!size || size < 0 || size > 30) {
             return 0;
@@ -148,6 +149,11 @@ var CSDKImageEditor = {
  * @property {CSDKImageEditor.OutputType} [outputType=Same as original image] - Forces a specific output type. Ex: `CSDKImageEditor.OutputType.JPEG`.
  * @property {CSDKImageEditor.ToolType[]} [tools=All tools] - Sets the list of tools that are available to the user, in the order you provide them within the array. Ex: `[CSDKImageEditor.Tooltype.CROP]`.
  * @property {number} [quality=100] - Sets the quality of the output of the image. This setting only affects `OutputType.JPEG` images. Valid values are `1` to `100`, inclusive.
+ * @property {boolean} [confirmExit=false] - Sets whether or not to confirm exiting the image editor when the user clicks done.
+ * @property {number} [outputSize=0] - Sets the size of the output image in mega pixels. Valid values are `0` to `30`, inclusive. Where `0` is the size of the preview image.
+ * @property {boolean} [saveWithNoChanges=true] - When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image.
+ * @property {boolean} [vibrate=false] - Whether or not to vibrate when certain tasks are performed.
+ * @property {number} [previewSize=0] - Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit.
  */
 
 module.exports = CSDKImageEditor;
