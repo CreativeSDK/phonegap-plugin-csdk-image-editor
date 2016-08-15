@@ -38,6 +38,7 @@ import java.util.ArrayList;
 
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
 import com.adobe.creativesdk.aviary.internal.filters.ToolLoaderFactory;
+import com.adobe.creativesdk.aviary.internal.headless.utils.MegaPixels;
 
 /**
 * This class exposes methods in Cordova that can be called from JavaScript.
@@ -100,6 +101,12 @@ public class ImageEditor extends CordovaPlugin {
             setOutputType(builder, args.getInt(1));
             setToolsArray(builder, args.getJSONArray(2));
             builder.withOutputQuality(args.getInt(3));
+            builder.withNoExitConfirmation(args.getBoolean(4));
+            builder.withOutputSize(MegaPixels.valueOf("Mp"+args.getString(5)));
+            builder.saveWithNoChanges(args.getBoolean(6));
+            builder.withVibrationEnabled(args.getBoolean(7));
+            builder.withAccentColor(args.getInt(8));
+            builder.withPreviewSize(args.getInt(9));
 
             Intent imageEditorIntent = builder.build();
 
