@@ -138,11 +138,12 @@ var app = {
         var imageUrl = "<YOUR_IMAGE_HERE>";
 
         var options = {
-            outputType: CSDKImageEditor.OutputType.PNG,
+            outputType: CSDKImageEditor.OutputType.JPEG,
             tools: [
                 CSDKImageEditor.ToolType.EFFECTS,
                 CSDKImageEditor.ToolType.CROP
-            ]
+            ],
+            quality: 50
         };
 
         /* 2.b) Launch the Image Editor */

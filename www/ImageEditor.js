@@ -132,9 +132,9 @@ var CSDKImageEditor = {
 
 /**
  * @typedef {Object} Options - An object for configuring Image Editor behavior.
- * @property {CSDKImageEditor.OutputType} [outputType=Same as original image] - Forces a specific output type.
- * @property {CSDKImageEditor.ToolType[]} [tools=All tools] - Sets the list of tools that are available to the user, in the order you provide them within the array.
- * @property {number} [quality=100] - Sets the quality of the output of the image. Valid values are `1` to `100`, inclusive.
+ * @property {CSDKImageEditor.OutputType} [outputType=Same as original image] - Forces a specific output type. Ex: `CSDKImageEditor.OutputType.JPEG`.
+ * @property {CSDKImageEditor.ToolType[]} [tools=All tools] - Sets the list of tools that are available to the user, in the order you provide them within the array. Ex: `[CSDKImageEditor.Tooltype.CROP]`.
+ * @property {number} [quality=100] - Sets the quality of the output of the image. This setting only affects `OutputType.JPEG` images. Valid values are `1` to `100`, inclusive.
  */
 
 module.exports = CSDKImageEditor;
