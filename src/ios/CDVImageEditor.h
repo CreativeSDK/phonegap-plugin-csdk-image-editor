@@ -31,6 +31,20 @@ enum CDVToolType {
 };
 typedef NSUInteger CDVToolType;
 
+enum CDVLeftButtonType {
+    LeftButtonTypeCancel = 0,
+    LeftButtonTypeBack,
+    LeftButtonTypeExit
+};
+typedef NSUInteger CDVLeftButtonType;
+
+enum CDVRightButtonType {
+    RightButtonTypeDone = 0,
+    RightButtonTypeSave,
+    RightButtonTypeNext,
+    RightButtonTypeSend
+};
+typedef NSUInteger CDVRightButtonType;
 
 @interface CDVImageEditor : CDVPlugin
 {

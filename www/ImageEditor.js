@@ -55,8 +55,28 @@ var CSDKImageEditor = {
         var previewSize = getValue(options.previewSize, 0);
         var outputFile = CSDKImageEditor.getOutputFile(options.outputFile);
 
+        // crop options for iOS
+        if (!options.crop) {
+            options.crop = {};
+        }
+        var cropCustom = getValue(options.crop.custom, true);
+        var cropInvert = getValue(options.crop.invert, true);
+        var cropOriginal = getValue(options.crop.original, true);
+        var customArray = getValue(options.crop.customArray, []);
+
+        var orientations = getValue(options.orientations, [CSDKImageEditor.OrientationType.PORTRAIT]);
+
+        // button options
+        if (!options.buttons) {
+            options.buttons = {};
+        }
+        var leftButton = getValue(options.buttons.left, CSDKImageEditor.LeftButtonType.CANCEL);
+        var rightButton = getValue(options.buttons.right, CSDKImageEditor.RightButtonType.DONE);
+
         var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize,
-            saveWithNoChanges, vibrate, color, previewSize, outputFile];
+            saveWithNoChanges, vibrate, color, previewSize, outputFile, cropCustom,
+            cropInvert, cropOriginal, customArray, orientations, leftButton, rightButton
+        ];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
@@ -144,6 +164,35 @@ var CSDKImageEditor = {
         COLOR: 18,
         OVERLAYS: 19,
         ADJUST: 20
+    },
+    /**
+     * @readonly
+     * @enum {number}
+     */
+    OrientationType:{
+        PORTRAIT: 1,
+        PORTRAIT_UPSIDE_DOWN: 2,
+        LANDSCAPE_RIGHT: 3,
+        LANDSCAPE_LEFT: 4
+    },
+    /**
+     * @readonly
+     * @enum {number}
+     */
+    LeftButtonType:{
+        CANCEL: 0,
+        BACK: 1,
+        EXIT: 2
+    },
+    /**
+     * @readonly
+     * @enum {number}
+     */
+    RightButtonType:{
+        DONE: 0,
+        SAVE: 1,
+        NEXT: 2,
+        SEND: 3
     }
 };
 
@@ -172,6 +221,13 @@ var CSDKImageEditor = {
  * @property {boolean} [vibrate=false] - Whether or not to vibrate when certain tasks are performed.
  * @property {number} [previewSize=0] - Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit.
  * @property {string} [outputFile=''] - Path to save the file. If not specified the system default is used.
+ * @property {boolean} [crop.custom=true] - Show custom option in crop tool
+ * @property {boolean} [crop.invert=true] - Show invert option in crop tool
+ * @property {boolean} [crop.original=true] - Show original option in crop tool
+ * @property {boolean} [crop.customArray=[]] - An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height`
+ * @property {CSDKImageEditor.OrientationType[]} [orientations=[CSDKImageEditor.OrientationType.PORTRAIT]] - Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`.
+ * @property {CSDKImageEditor.LeftButtonType} [buttons.left=CSDKImageEditor.LeftButtonType.CANCEL] - Label for the left button. Must be one of CSDKImageEditor.LeftButtonType.
+ * @property {CSDKImageEditor.RightButtonType} [buttons.left=CSDKImageEditor.RightButtonType.APPLY] - Label for the right button. Must be one of CSDKImageEditor.RightButtonType.
  */
 
 module.exports = CSDKImageEditor;

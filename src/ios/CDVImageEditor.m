@@ -36,7 +36,7 @@
 
     self.imageUri = [command.arguments objectAtIndex:0];
     self.encodingType = [command.arguments objectAtIndex:1];
-    NSMutableArray *tools = [self createToolArray:[command.arguments objectAtIndex:2]];
+    NSArray *tools = [self createToolArray:[command.arguments objectAtIndex:2]];
     self.quality = [[command.arguments objectAtIndex:3] integerValue] != 100 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
 
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUri]];
@@ -48,6 +48,28 @@
     if ([tools count] > 0) {
         [AdobeImageEditorCustomization setToolOrder:tools];
     }
+
+    BOOL custom = [[command.arguments objectAtIndex:11] boolValue];
+    [AdobeImageEditorCustomization setCropToolCustomEnabled: custom];
+
+    if (custom) {
+        NSArray *crops = [self createCustomCropArray: [command.arguments objectAtIndex:14]];
+        [AdobeImageEditorCustomization setCropToolPresets: crops];
+    }
+
+    BOOL invert = [[command.arguments objectAtIndex:12] boolValue];
+    [AdobeImageEditorCustomization setCropToolInvertEnabled: invert];
+
+    BOOL orig = [[command.arguments objectAtIndex:13] boolValue];
+    [AdobeImageEditorCustomization setCropToolOriginalEnabled: orig];
+
+    NSArray *orientations = [command.arguments objectAtIndex:15];
+    [AdobeImageEditorCustomization setSupportedIpadOrientations:orientations];
+
+    // setup buttons
+    [AdobeImageEditorCustomization setLeftNavigationBarButtonTitle:[self getLeftButtonLabel:[command.arguments objectAtIndex:16]]];
+    [AdobeImageEditorCustomization setRightNavigationBarButtonTitle:[self getRightButtonLabel:[command.arguments objectAtIndex:17]]];
+
 	[self.viewController presentViewController:editorController animated:YES completion:nil];
 }
 
@@ -105,6 +127,47 @@
     }
 
     return data;
+}
+
+- (NSString *) getLeftButtonLabel:(NSNumber*)buttonIndex
+{
+    NSString *label = kAFLeftNavigationTitlePresetCancel;
+    int buttonId = [buttonIndex integerValue];
+    switch(buttonId) {
+        case LeftButtonTypeBack:
+            label = kAFLeftNavigationTitlePresetBack;
+            break;
+        case LeftButtonTypeExit:
+            label = kAFLeftNavigationTitlePresetExit;
+            break;
+        case LeftButtonTypeCancel:
+        default:
+            label = kAFLeftNavigationTitlePresetCancel;
+            break;
+    }
+    return label;
+}
+
+- (NSString *) getRightButtonLabel:(NSNumber*)buttonIndex
+{
+    NSString *label = kAFRightNavigationTitlePresetDone;
+    int buttonId = [buttonIndex integerValue];
+    switch(buttonId) {
+        case RightButtonTypeSave:
+            label = kAFRightNavigationTitlePresetSave;
+            break;
+        case RightButtonTypeNext:
+            label = kAFRightNavigationTitlePresetNext;
+            break;
+        case RightButtonTypeSend:
+            label = kAFRightNavigationTitlePresetSend;
+            break;
+        case RightButtonTypeDone:
+        default:
+            label = kAFRightNavigationTitlePresetDone;
+            break;
+    }
+    return label;
 }
 
 - (NSArray*) createToolArray:(NSArray*)toolOptions
@@ -189,6 +252,22 @@
     }
 
     return [tools copy];
+}
+
+- (NSArray*) createCustomCropArray:(NSArray*)cropOptions
+{
+    NSMutableArray *crops = [NSMutableArray array];
+
+    for (NSDictionary *tempCrop in cropOptions) {
+        NSMutableDictionary *crop = [NSMutableDictionary dictionaryWithCapacity: 3];
+        [crop setObject:[tempCrop objectForKey:@"label"] forKey:kAFCropPresetName];
+        [crop setObject:[tempCrop objectForKey:@"width"] forKey:kAFCropPresetWidth];
+        [crop setObject:[tempCrop objectForKey:@"height"] forKey:kAFCropPresetHeight];
+
+        [crops addObject: crop];
+    }
+
+    return [crops copy];
 }
 
 @end

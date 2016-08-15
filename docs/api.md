@@ -30,6 +30,9 @@ A global object that lets you interact with the Creative SDK Image Editor.
 * [CSDKImageEditor](#CSDKImageEditor)
     * [.OutputType](#CSDKImageEditor.OutputType) : <code>enum</code>
     * [.ToolType](#CSDKImageEditor.ToolType) : <code>enum</code>
+    * [.OrientationType](#CSDKImageEditor.OrientationType) : <code>enum</code>
+    * [.LeftButtonType](#CSDKImageEditor.LeftButtonType) : <code>enum</code>
+    * [.RightButtonType](#CSDKImageEditor.RightButtonType) : <code>enum</code>
     * [.edit(successCallback, errorCallback, imageUrl, options)](#CSDKImageEditor.edit)
 
 <a name="CSDKImageEditor.OutputType"></a>
@@ -74,6 +77,47 @@ A global object that lets you interact with the Creative SDK Image Editor.
 | COLOR | <code>number</code> | <code>18</code> | 
 | OVERLAYS | <code>number</code> | <code>19</code> | 
 | ADJUST | <code>number</code> | <code>20</code> | 
+
+<a name="CSDKImageEditor.OrientationType"></a>
+
+### CSDKImageEditor.OrientationType : <code>enum</code>
+**Kind**: static enum property of <code>[CSDKImageEditor](#CSDKImageEditor)</code>  
+**Read only**: true  
+**Properties**
+
+| Name | Type | Default |
+| --- | --- | --- |
+| PORTRAIT | <code>number</code> | <code>1</code> | 
+| PORTRAIT_UPSIDE_DOWN | <code>number</code> | <code>2</code> | 
+| LANDSCAPE_RIGHT | <code>number</code> | <code>3</code> | 
+| LANDSCAPE_LEFT | <code>number</code> | <code>4</code> | 
+
+<a name="CSDKImageEditor.LeftButtonType"></a>
+
+### CSDKImageEditor.LeftButtonType : <code>enum</code>
+**Kind**: static enum property of <code>[CSDKImageEditor](#CSDKImageEditor)</code>  
+**Read only**: true  
+**Properties**
+
+| Name | Type | Default |
+| --- | --- | --- |
+| CANCEL | <code>number</code> | <code>0</code> | 
+| BACK | <code>number</code> | <code>1</code> | 
+| EXIT | <code>number</code> | <code>2</code> | 
+
+<a name="CSDKImageEditor.RightButtonType"></a>
+
+### CSDKImageEditor.RightButtonType : <code>enum</code>
+**Kind**: static enum property of <code>[CSDKImageEditor](#CSDKImageEditor)</code>  
+**Read only**: true  
+**Properties**
+
+| Name | Type | Default |
+| --- | --- | --- |
+| DONE | <code>number</code> | <code>0</code> | 
+| SAVE | <code>number</code> | <code>1</code> | 
+| NEXT | <code>number</code> | <code>2</code> | 
+| SEND | <code>number</code> | <code>3</code> | 
 
 <a name="CSDKImageEditor.edit"></a>
 
@@ -130,4 +174,11 @@ An object for configuring Image Editor behavior.
 | vibrate | <code>boolean</code> | <code>false</code> | Whether or not to vibrate when certain tasks are performed. |
 | previewSize | <code>number</code> | <code>0</code> | Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit. |
 | outputFile | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Path to save the file. If not specified the system default is used. |
+| crop.custom | <code>boolean</code> | <code>true</code> | Show custom option in crop tool |
+| crop.invert | <code>boolean</code> | <code>true</code> | Show invert option in crop tool |
+| crop.original | <code>boolean</code> | <code>true</code> | Show original option in crop tool |
+| crop.customArray | <code>boolean</code> | <code>[]</code> | An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height` |
+| orientations | <code>[Array.&lt;OrientationType&gt;](#CSDKImageEditor.OrientationType)</code> | <code>[CSDKImageEditor.OrientationType.PORTRAIT]</code> | Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`. |
+| buttons.left | <code>[LeftButtonType](#CSDKImageEditor.LeftButtonType)</code> | <code>CSDKImageEditor.LeftButtonType.CANCEL</code> | Label for the left button. Must be one of CSDKImageEditor.LeftButtonType. |
+| buttons.left | <code>[RightButtonType](#CSDKImageEditor.RightButtonType)</code> | <code>CSDKImageEditor.RightButtonType.APPLY</code> | Label for the right button. Must be one of CSDKImageEditor.RightButtonType. |
 
