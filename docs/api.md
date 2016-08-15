@@ -129,4 +129,5 @@ An object for configuring Image Editor behavior.
 | saveWithNoChanges | <code>boolean</code> | <code>true</code> | When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image. |
 | vibrate | <code>boolean</code> | <code>false</code> | Whether or not to vibrate when certain tasks are performed. |
 | previewSize | <code>number</code> | <code>0</code> | Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit. |
+| outputFile | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Path to save the file. If not specified the system default is used. |
 

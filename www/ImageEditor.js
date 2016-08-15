@@ -172,6 +172,7 @@ var CSDKImageEditor = {
  * @property {boolean} [saveWithNoChanges=true] - When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image.
  * @property {boolean} [vibrate=false] - Whether or not to vibrate when certain tasks are performed.
  * @property {number} [previewSize=0] - Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit.
+ * @property {string} [outputFile=''] - Path to save the file. If not specified the system default is used.
  */
 
 module.exports = CSDKImageEditor;
