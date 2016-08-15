@@ -150,5 +150,46 @@ describe('phonegap-plugin-csdk-image-editor', function () {
                 expect(CSDKImageEditor.getOutputSize(457)).toBe(0);
             });
         });
+
+        describe('Preview Size', function() {
+            it('should contain a getPreviewSize function', function () {
+                expect(CSDKImageEditor.getPreviewSize).toBeDefined();
+                expect(typeof CSDKImageEditor.getPreviewSize === 'function').toBe(true);
+            });
+
+            it('should be valid', function() {
+                expect(CSDKImageEditor.getPreviewSize(1)).toBe(1);
+                expect(CSDKImageEditor.getPreviewSize(15)).toBe(15);
+                expect(CSDKImageEditor.getPreviewSize(30)).toBe(30);
+            });
+
+            it('should convert invalid values to 0', function() {
+                expect(CSDKImageEditor.getPreviewSize()).toBe(0);
+                expect(CSDKImageEditor.getPreviewSize(null)).toBe(0);
+                expect(CSDKImageEditor.getPreviewSize(undefined)).toBe(0);
+                expect(CSDKImageEditor.getPreviewSize(-1)).toBe(0);
+                expect(CSDKImageEditor.getPreviewSize(-10)).toBe(0);
+            });
+        });
+
+
+        describe('Output File', function() {
+            it('should contain a getOutputFile function', function () {
+                expect(CSDKImageEditor.getOutputFile).toBeDefined();
+                expect(typeof CSDKImageEditor.getOutputFile === 'function').toBe(true);
+            });
+
+            it('should be valid', function() {
+                expect(CSDKImageEditor.getOutputFile('/data/data/ack.jpg')).toBe('/data/data/ack.jpg');
+                expect(CSDKImageEditor.getOutputFile('file:///data/data/ack.jpg')).toBe('/data/data/ack.jpg');
+            });
+
+            it('should convert invalid values to empty string', function() {
+                expect(CSDKImageEditor.getOutputFile()).toBe('');
+                expect(CSDKImageEditor.getOutputFile('')).toBe('');
+                expect(CSDKImageEditor.getOutputFile(null)).toBe('');
+                expect(CSDKImageEditor.getOutputFile(undefined)).toBe('');
+            });
+        });
     });
 });

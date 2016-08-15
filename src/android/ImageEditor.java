@@ -34,6 +34,7 @@ import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
@@ -105,8 +106,22 @@ public class ImageEditor extends CordovaPlugin {
             builder.withOutputSize(MegaPixels.valueOf("Mp"+args.getString(5)));
             builder.saveWithNoChanges(args.getBoolean(6));
             builder.withVibrationEnabled(args.getBoolean(7));
-            builder.withAccentColor(args.getInt(8));
-            builder.withPreviewSize(args.getInt(9));
+
+            int color = args.getInt(8);
+            if (color != 0) {
+                builder.withAccentColor(color);
+            }
+
+            int previewSize = args.getInt(9);
+            if (previewSize > 0) {
+                builder.withPreviewSize(previewSize);
+            }
+
+            String outputFile = args.getString(10);
+            if (!"".equals(outputFile)) {
+                File fp = new File(outputFile);
+                builder.withOutput(fp);
+            }
 
             Intent imageEditorIntent = builder.build();
 

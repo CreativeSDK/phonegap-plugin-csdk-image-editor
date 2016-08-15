@@ -1,3 +1,4 @@
+cordova.define("phonegap-plugin-csdk-image-editor.ImageEditor", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -51,11 +52,12 @@ var CSDKImageEditor = {
         var outputSize = CSDKImageEditor.getOutputSize(options.outputSize);
         var saveWithNoChanges = getValue(options.saveWithNoChanges, true);
         var vibrate = getValue(options.vibrate, false);
-        var color = getValue(options.color, -16777216);
+        var color = getValue(options.color, 0);
         var previewSize = getValue(options.previewSize, 0);
+        var outputFile = CSDKImageEditor.getOutputFile(options.outputFile);
 
         var args = [imageUrl, outputType, tools, quality, confirmExit, outputSize,
-            saveWithNoChanges, vibrate, color, previewSize];
+            saveWithNoChanges, vibrate, color, previewSize, outputFile];
 
         exec(successCallback, errorCallback, 'CSDKImageEditor', 'edit', args);
     },
@@ -90,6 +92,22 @@ var CSDKImageEditor = {
             return 0;
         }
         return size;
+    },
+    /** @private */
+    getPreviewSize: function(size) {
+        if (!size || size < 0) {
+            return 0;
+        }
+        return size;
+    },
+    /** @private */
+    getOutputFile: function(file) {
+        if (!file) {
+            return '';
+        } else if (file.startsWith('file://')) {
+            file = file.substr(7);
+        }
+        return file;
     },
     /**
      * @readonly
@@ -157,3 +175,5 @@ var CSDKImageEditor = {
  */
 
 module.exports = CSDKImageEditor;
+
+});
