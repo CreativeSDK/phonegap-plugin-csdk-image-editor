@@ -1,4 +1,3 @@
-cordova.define("phonegap-plugin-csdk-image-editor.ImageEditor", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -176,5 +175,3 @@ var CSDKImageEditor = {
  */
 
 module.exports = CSDKImageEditor;
-
-});
