@@ -38,7 +38,6 @@
     self.encodingType = [command.arguments objectAtIndex:1];
     NSMutableArray *tools = [self createToolArray:[command.arguments objectAtIndex:2]];
     self.quality = [[command.arguments objectAtIndex:3] integerValue] != 100 ? [command.arguments objectAtIndex:3] : [NSNumber numberWithInt:100];
-    self.confirmExit = [command.arguments objectAtIndex:4];;
 
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUri]];
     UIImage *image = [UIImage imageWithData:imageData];

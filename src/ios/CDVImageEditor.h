@@ -38,7 +38,6 @@ typedef NSUInteger CDVToolType;
     NSString *imageUri;
     NSNumber *encodingType;
     NSNumber *quality;
-    NSBoolean *confirmExit;
 }
 
 @property (nonatomic, retain) NSString *callbackId;
