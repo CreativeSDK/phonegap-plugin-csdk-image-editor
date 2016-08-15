@@ -55,14 +55,14 @@ phonegap plugin add --save https://github.com/CreativeSDK/phonegap-plugin-csdk-i
 
 ## Downloading the Creative SDK
 
-**iOS** 
+**iOS**
 
-To get the iOS SDK, go to the [Downloads page](https://creativesdk.adobe.com/downloads.html), download the ZIP files, and extract them to the `src/ios` folder of this plugin. Extracting the ZIP will create an `AdobeCreativeSDKFrameworks` folder. 
+To get the iOS SDK, go to the [Downloads page](https://creativesdk.adobe.com/downloads.html), download the ZIP files, and extract them to the `src/ios` folder of this plugin. Extracting the ZIP will create an `AdobeCreativeSDKFrameworks` folder.
 
 The ZIP files contain all the frameworks in the Creative SDK, but for this plugin we will only be using the `AdobeCreativeSDKCore.framework`.
 
 
-**Android** 
+**Android**
 
 No action is required for Android. The Creative SDK for Android is delivered as a remote Maven repository, and the required framework will be downloaded automatically by the plugin.
 
@@ -85,7 +85,7 @@ Add a button within the `body`. The PhoneGap "Hello World" example includes a `d
 // ...
 
 <div class="app">
-    
+
 	// ...
 
     <button id="launch-editor">Launch image editor</button>
@@ -99,7 +99,7 @@ Add a button within the `body`. The PhoneGap "Hello World" example includes a `d
 
 _**Note:** Most of the code below comes from the PhoneGap "Hello World" example, and we are providing it here for context._
 
-This plugin provides access to a global `CSDKImageEditor` object. 
+This plugin provides access to a global `CSDKImageEditor` object.
 
 The `CSDKImageEditor` object exposes a `.edit()` function, and some enums to use when setting up your options.
 
@@ -125,7 +125,7 @@ var app = {
 
     /* 2) Make a helper function to launch the Image Editor */
     launchEditor: function() {
-        
+
     	/* 2.a) Prep work for calling `.edit()` */
         function success(newUrl) {
             console.log("Success!", newUrl);
@@ -155,4 +155,4 @@ var app = {
 
 # API guide
 
-[See the full API guide](www/api.md).
+[See the full API guide](docs/api.md).

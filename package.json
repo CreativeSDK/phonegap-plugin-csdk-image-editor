@@ -1,42 +1,45 @@
 {
-    "name": "phonegap-plugin-csdk-image-editor",
-    "description": "This repo is a template for starting a new plugin.",
-    "version": "0.0.1",
-    "homepage": "http://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor#readme",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor.git"
-    },
-    "bugs": {
-        "url": "https://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor/issues"
-    },
-    "cordova": {
-        "id": "phonegap-plugin-csdk-image-editor",
-        "platforms": [
-            "ios",
-            "android",
-            "browser"
-        ]
-    },
-    "keywords": [
-        "ecosystem:cordova",
-        "ecosystem:phonegap",
-        "cordova-ios",
-        "cordova-android",
-        "cordova-browser"
-    ],
-    "engines": [
-        {
-            "name": "cordova",
-            "version": ">=3.0.0"
-        }
-    ],
-    "author": "Adobe PhoneGap Team",
-    "license": "APL",
-    "scripts": {
-        "test": "jasmine-node --color spec"
-    },
-    "devDependencies": {
-        "jasmine-node": "1.14.5"
+  "name": "phonegap-plugin-csdk-image-editor",
+  "description": "This repo is a template for starting a new plugin.",
+  "version": "0.0.1",
+  "homepage": "http://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor/issues"
+  },
+  "cordova": {
+    "id": "phonegap-plugin-csdk-image-editor",
+    "platforms": [
+      "ios",
+      "android",
+      "browser"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "ecosystem:phonegap",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-browser"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
     }
+  ],
+  "author": "Adobe PhoneGap Team",
+  "license": "APL",
+  "scripts": {
+    "build": "npm run build:docs && npm test",
+    "build:docs": "jsdoc2md www/ImageEditor.js > docs/api.md",
+    "test": "jasmine-node --color spec"
+  },
+  "devDependencies": {
+    "jasmine-node": "1.14.5",
+    "jsdoc-to-markdown": "^1.3.7"
+  }
 }

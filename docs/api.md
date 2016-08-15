@@ -124,4 +124,9 @@ An object for configuring Image Editor behavior.
 | outputType | <code>[OutputType](#CSDKImageEditor.OutputType)</code> | <code>Same as original image</code> | Forces a specific output type. Ex: `CSDKImageEditor.OutputType.JPEG`. |
 | tools | <code>[Array.&lt;ToolType&gt;](#CSDKImageEditor.ToolType)</code> | <code>All tools</code> | Sets the list of tools that are available to the user, in the order you provide them within the array. Ex: `[CSDKImageEditor.Tooltype.CROP]`. |
 | quality | <code>number</code> | <code>100</code> | Sets the quality of the output of the image. This setting only affects `OutputType.JPEG` images. Valid values are `1` to `100`, inclusive. |
+| confirmExit | <code>boolean</code> | <code>false</code> | Sets whether or not to confirm exiting the image editor when the user clicks done. |
+| outputSize | <code>number</code> | <code>0</code> | Sets the size of the output image in mega pixels. Valid values are `0` to `30`, inclusive. Where `0` is the size of the preview image. |
+| saveWithNoChanges | <code>boolean</code> | <code>true</code> | When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image. |
+| vibrate | <code>boolean</code> | <code>false</code> | Whether or not to vibrate when certain tasks are performed. |
+| previewSize | <code>number</code> | <code>0</code> | Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit. |
 
