@@ -121,7 +121,7 @@ An object for configuring Image Editor behavior.
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| outputType | <code>[OutputType](#CSDKImageEditor.OutputType)</code> | <code>Same as original image</code> | Forces a specific output type. |
-| tools | <code>[Array.&lt;ToolType&gt;](#CSDKImageEditor.ToolType)</code> | <code>All tools</code> | Sets the list of tools that are available to the user, in the order you provide them within the array. |
-| quality | <code>number</code> | <code>100</code> | Sets the quality of the output of the image. Valid values are `1` to `100`, inclusive. |
+| outputType | <code>[OutputType](#CSDKImageEditor.OutputType)</code> | <code>Same as original image</code> | Forces a specific output type. Ex: `CSDKImageEditor.OutputType.JPEG`. |
+| tools | <code>[Array.&lt;ToolType&gt;](#CSDKImageEditor.ToolType)</code> | <code>All tools</code> | Sets the list of tools that are available to the user, in the order you provide them within the array. Ex: `[CSDKImageEditor.Tooltype.CROP]`. |
+| quality | <code>number</code> | <code>100</code> | Sets the quality of the output of the image. This setting only affects `OutputType.JPEG` images. Valid values are `1` to `100`, inclusive. |
 
