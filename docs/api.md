@@ -171,14 +171,14 @@ An object for configuring Image Editor behavior.
 | confirmExit | <code>boolean</code> | <code>false</code> | Sets whether or not to confirm exiting the image editor when the user clicks done. |
 | outputSize | <code>number</code> | <code>0</code> | Sets the size of the output image in mega pixels. Valid values are `0` to `30`, inclusive. Where `0` is the size of the preview image. |
 | saveWithNoChanges | <code>boolean</code> | <code>true</code> | When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image. |
-| vibrate | <code>boolean</code> | <code>false</code> | Whether or not to vibrate when certain tasks are performed. |
-| previewSize | <code>number</code> | <code>0</code> | Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit. |
-| outputFile | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Path to save the file. If not specified the system default is used. |
-| crop.custom | <code>boolean</code> | <code>true</code> | Show custom option in crop tool |
-| crop.invert | <code>boolean</code> | <code>true</code> | Show invert option in crop tool |
-| crop.original | <code>boolean</code> | <code>true</code> | Show original option in crop tool |
-| crop.customArray | <code>boolean</code> | <code>[]</code> | An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height` |
-| orientations | <code>[Array.&lt;OrientationType&gt;](#CSDKImageEditor.OrientationType)</code> | <code>[CSDKImageEditor.OrientationType.PORTRAIT]</code> | Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`. |
-| buttons.left | <code>[LeftButtonType](#CSDKImageEditor.LeftButtonType)</code> | <code>CSDKImageEditor.LeftButtonType.CANCEL</code> | Label for the left button. Must be one of CSDKImageEditor.LeftButtonType. |
-| buttons.left | <code>[RightButtonType](#CSDKImageEditor.RightButtonType)</code> | <code>CSDKImageEditor.RightButtonType.APPLY</code> | Label for the right button. Must be one of CSDKImageEditor.RightButtonType. |
+| vibrate | <code>boolean</code> | <code>false</code> | **[Android only]** Whether or not to vibrate when certain tasks are performed. |
+| previewSize | <code>number</code> | <code>0</code> | **[Android only]** Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit. |
+| outputFile | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | **[Android only]** Path to save the file. If not specified the system default is used. |
+| crop.custom | <code>boolean</code> | <code>true</code> | **[iOS only]** Show custom option in crop tool |
+| crop.invert | <code>boolean</code> | <code>true</code> | **[iOS only]** Show invert option in crop tool |
+| crop.original | <code>boolean</code> | <code>true</code> | **[iOS only]** Show original option in crop tool |
+| crop.customArray | <code>boolean</code> | <code>[]</code> | **[iOS only]** An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height` |
+| orientations | <code>[Array.&lt;OrientationType&gt;](#CSDKImageEditor.OrientationType)</code> | <code>[CSDKImageEditor.OrientationType.PORTRAIT]</code> | **[iOS only]** Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`. |
+| buttons.left | <code>[LeftButtonType](#CSDKImageEditor.LeftButtonType)</code> | <code>CSDKImageEditor.LeftButtonType.CANCEL</code> | **[iOS only]** Label for the left button. Must be one of CSDKImageEditor.LeftButtonType. |
+| buttons.left | <code>[RightButtonType](#CSDKImageEditor.RightButtonType)</code> | <code>CSDKImageEditor.RightButtonType.APPLY</code> | **[iOS only]** Label for the right button. Must be one of CSDKImageEditor.RightButtonType. |
 

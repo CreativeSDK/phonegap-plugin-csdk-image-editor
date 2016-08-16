@@ -218,16 +218,16 @@ var CSDKImageEditor = {
  * @property {boolean} [confirmExit=false] - Sets whether or not to confirm exiting the image editor when the user clicks done.
  * @property {number} [outputSize=0] - Sets the size of the output image in mega pixels. Valid values are `0` to `30`, inclusive. Where `0` is the size of the preview image.
  * @property {boolean} [saveWithNoChanges=true] - When `true` the success callback will be invoked even when the user does not make any changes to the image. If `false` the error callback will be invoked even when the user does not make any changes to the image.
- * @property {boolean} [vibrate=false] - Whether or not to vibrate when certain tasks are performed.
- * @property {number} [previewSize=0] - Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit.
- * @property {string} [outputFile=''] - Path to save the file. If not specified the system default is used.
- * @property {boolean} [crop.custom=true] - Show custom option in crop tool
- * @property {boolean} [crop.invert=true] - Show invert option in crop tool
- * @property {boolean} [crop.original=true] - Show original option in crop tool
- * @property {boolean} [crop.customArray=[]] - An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height`
- * @property {CSDKImageEditor.OrientationType[]} [orientations=[CSDKImageEditor.OrientationType.PORTRAIT]] - Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`.
- * @property {CSDKImageEditor.LeftButtonType} [buttons.left=CSDKImageEditor.LeftButtonType.CANCEL] - Label for the left button. Must be one of CSDKImageEditor.LeftButtonType.
- * @property {CSDKImageEditor.RightButtonType} [buttons.left=CSDKImageEditor.RightButtonType.APPLY] - Label for the right button. Must be one of CSDKImageEditor.RightButtonType.
+ * @property {boolean} [vibrate=false] - **[Android only]** Whether or not to vibrate when certain tasks are performed.
+ * @property {number} [previewSize=0] - **[Android only]** Changes the size of the preview used in the editor. This is not the size of the output file, but only the size of the preview used during the edit.
+ * @property {string} [outputFile=''] - **[Android only]** Path to save the file. If not specified the system default is used.
+ * @property {boolean} [crop.custom=true] - **[iOS only]** Show custom option in crop tool
+ * @property {boolean} [crop.invert=true] - **[iOS only]** Show invert option in crop tool
+ * @property {boolean} [crop.original=true] - **[iOS only]** Show original option in crop tool
+ * @property {boolean} [crop.customArray=[]] - **[iOS only]** An array of custom crop options. Each array element must be an object with three properties: `label`, `width` and `height`
+ * @property {CSDKImageEditor.OrientationType[]} [orientations=[CSDKImageEditor.OrientationType.PORTRAIT]] - **[iOS only]** Sets the list of orientations that are available to the user. Ex: `[CSDKImageEditor.OrientationType.LANDSCAPE_LEFT, CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT]`.
+ * @property {CSDKImageEditor.LeftButtonType} [buttons.left=CSDKImageEditor.LeftButtonType.CANCEL] - **[iOS only]** Label for the left button. Must be one of CSDKImageEditor.LeftButtonType.
+ * @property {CSDKImageEditor.RightButtonType} [buttons.left=CSDKImageEditor.RightButtonType.APPLY] - **[iOS only]** Label for the right button. Must be one of CSDKImageEditor.RightButtonType.
  */
 
 module.exports = CSDKImageEditor;
