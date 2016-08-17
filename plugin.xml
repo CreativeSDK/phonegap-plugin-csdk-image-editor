@@ -1,77 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-  Licensed to the Apache Software Foundation (ASF) under one
-  or more contributor license agreements.  See the NOTICE file
-  distributed with this work for additional information
-  regarding copyright ownership.  The ASF licenses this file
-  to you under the Apache License, Version 2.0 (the
-  "License"); you may not use this file except in compliance
-  with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing,
-  software distributed under the License is distributed on an
-  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-  KIND, either express or implied.  See the License for the
-  specific language governing permissions and limitations
-  under the License.
--->
-
-<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
-           id="phonegap-plugin-csdk-image-editor"
-      version="0.0.2">
-    <name>phonegap-plugin-csdk-image-editor</name>
-
-    <!-- dependency id="phonegap-plugin-csdk-client-auth" url="https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth" / -->
-
-    <js-module src="www/ImageEditor.js" name="ImageEditor">
-        <clobbers target="CSDKImageEditor" />
-    </js-module>
-
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="CSDKImageEditor" >
-                <param name="android-package" value="com.adobe.phonegap.csdk.ImageEditor"/>
-            </feature>
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.VIBRATE" />
-        </config-file>
-
-        <framework src="com.adobe.creativesdk:image:4.6.3+"/>
-        <framework src="com.localytics.android:library:3.8.0+"/>
-
-        <source-file src="src/android/ImageEditor.java" target-dir="src/com/adobe/phonegap/csdk" />
-    </platform>
-
-    <!-- ios -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="CSDKImageEditor">
-                <param name="ios-package" value="CDVImageEditor"/>
-            </feature>
-        </config-file>
-        <header-file src="src/ios/CDVImageEditor.h" />
-        <source-file src="src/ios/CDVImageEditor.m" />
-
-        <resource-file src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework/Versions/A/Resources/AdobeCreativeSDKImageResources.bundle" />
-        <framework src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework" custom="true" />
-
-		<framework src="MobileCoreServices.framework" />
-        <framework src="libc++.dylib" />
-        <framework src="libz.dylib" />
-        <framework src="Accelerate.framework" />
-        <framework src="CoreData.framework" />
-        <framework src="libsqlite3.0.dylib" />
-        <framework src="Foundation.framework" />
-        <framework src="MessageUI.framework" />
-        <framework src="OpenGLES.framework" />
-        <framework src="QuartzCore.framework" />
-        <framework src="StoreKit.framework" />
-        <framework src="UIKit.framework" />
-    </platform>
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0" id="phonegap-plugin-csdk-image-editor" version="1.0.0">
+  <name>phonegap-plugin-csdk-image-editor</name>
+  <js-module src="www/ImageEditor.js" name="ImageEditor">
+    <clobbers target="CSDKImageEditor"/>
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CSDKImageEditor">
+        <param name="android-package" value="com.adobe.phonegap.csdk.ImageEditor"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.VIBRATE"/>
+    </config-file>
+    <framework src="com.adobe.creativesdk:image:4.6.3+"/>
+    <framework src="com.localytics.android:library:3.8.0+"/>
+    <source-file src="src/android/ImageEditor.java" target-dir="src/com/adobe/phonegap/csdk"/>
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CSDKImageEditor">
+        <param name="ios-package" value="CDVImageEditor"/>
+      </feature>
+    </config-file>
+    <header-file src="src/ios/CDVImageEditor.h"/>
+    <source-file src="src/ios/CDVImageEditor.m"/>
+    <resource-file src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework/Versions/A/Resources/AdobeCreativeSDKImageResources.bundle"/>
+    <framework src="src/ios/AdobeCreativeSDKFrameworks/AdobeCreativeSDKImage.framework" custom="true"/>
+    <framework src="MobileCoreServices.framework"/>
+    <framework src="libc++.dylib"/>
+    <framework src="libz.dylib"/>
+    <framework src="Accelerate.framework"/>
+    <framework src="CoreData.framework"/>
+    <framework src="libsqlite3.0.dylib"/>
+    <framework src="Foundation.framework"/>
+    <framework src="MessageUI.framework"/>
+    <framework src="OpenGLES.framework"/>
+    <framework src="QuartzCore.framework"/>
+    <framework src="StoreKit.framework"/>
+    <framework src="UIKit.framework"/>
+  </platform>
 </plugin>
