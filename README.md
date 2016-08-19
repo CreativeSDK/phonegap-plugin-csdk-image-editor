@@ -24,11 +24,11 @@ phonegap-plugin-csdk-image-editor
 
 [![Stories in Ready](https://badge.waffle.io/CreativeSDK/phonegap-plugin-csdk-image-editor.png?label=ready&title=Ready)](http://waffle.io/CreativeSDK/phonegap-plugin-csdk-image-editor)
 
-The Creative SDK Image Editor UI component provides a solution for developers seeking to add powerful photo editing to their Android apps.
+The Creative SDK Image Editor UI component provides a solution for developers seeking to add powerful photo editing to their Android, iOS, and Web apps.
 
 The Image Editor includes over twenty advanced imaging tools covering everything from Effects and Crop to Redeye and Blemish. The tools are all GPU-accelerated, so all image modifications happen in real time or close to it.
 
-This plugin makes it possible for you to use the Creative SDK Image Editor in your PhoneGap apps. Read on to learn how!
+This plugin makes it possible for you to use the Creative SDK Image Editor in your PhoneGap apps on Android and iOS. Read on to learn how!
 
 ### Contents
 
