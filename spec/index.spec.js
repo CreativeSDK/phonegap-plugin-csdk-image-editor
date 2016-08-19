@@ -191,5 +191,31 @@ describe('phonegap-plugin-csdk-image-editor', function () {
                 expect(CSDKImageEditor.getOutputFile(undefined)).toBe('');
             });
         });
+
+        describe('Orientation Type', function() {
+            it('should contain the OrientationType constants', function () {
+                expect(CSDKImageEditor.OrientationType.PORTRAIT).toBe(1);
+                expect(CSDKImageEditor.OrientationType.PORTRAIT_UPSIDE_DOWN).toBe(2);
+                expect(CSDKImageEditor.OrientationType.LANDSCAPE_RIGHT).toBe(3);
+                expect(CSDKImageEditor.OrientationType.LANDSCAPE_LEFT).toBe(4);
+            });
+        });
+
+        describe('Left Button Type', function() {
+            it('should contain the LeftButtonType constants', function () {
+                expect(CSDKImageEditor.LeftButtonType.CANCEL).toBe(0);
+                expect(CSDKImageEditor.LeftButtonType.BACK).toBe(1);
+                expect(CSDKImageEditor.LeftButtonType.EXIT).toBe(2);
+            });
+        });
+
+        describe('Right Button Type', function() {
+            it('should contain the RightButtonType constants', function () {
+                expect(CSDKImageEditor.RightButtonType.DONE).toBe(0);
+                expect(CSDKImageEditor.RightButtonType.SAVE).toBe(1);
+                expect(CSDKImageEditor.RightButtonType.NEXT).toBe(2);
+                expect(CSDKImageEditor.RightButtonType.SEND).toBe(3);
+            });
+        });
     });
 });

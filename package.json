@@ -1,7 +1,7 @@
 {
   "name": "phonegap-plugin-csdk-image-editor",
   "description": "This repo is a template for starting a new plugin.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "http://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor#readme",
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "jasmine-node": "1.14.5",
-    "jsdoc-to-markdown": "^1.3.7"
+    "jsdoc-to-markdown": "^1.3.7",
+    "pluginpub": "^0.0.5"
   }
 }

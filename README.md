@@ -49,6 +49,14 @@ This plugin makes it possible for you to use the Creative SDK Image Editor in yo
 
 Use the command below to add the plugin to your app.
 
+### Adding released version
+
+```
+phonegap plugin add --save phonegap-plugin-csdk-image-editor
+```
+
+### Adding development version
+
 ```
 phonegap plugin add --save https://github.com/CreativeSDK/phonegap-plugin-csdk-image-editor
 ```
