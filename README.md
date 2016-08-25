@@ -40,6 +40,8 @@ This plugin makes it possible for you to use the Creative SDK Image Editor in yo
 
 # Prerequisites
 
+**Required:** You must first install the [Client Auth plugin](https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth) for this plugin to work.
+
 **Required:** This guide will assume that you have installed all software and completed all of the steps in the [Client Auth guide](https://github.com/CreativeSDK/phonegap-plugin-csdk-client-auth).
 
 
