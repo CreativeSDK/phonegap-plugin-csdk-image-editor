@@ -32,7 +32,7 @@
     }
   ],
   "author": "Adobe PhoneGap Team",
-  "license": "APL",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "npm run build:docs && npm test",
     "build:docs": "jsdoc2md www/ImageEditor.js > docs/api.md",
