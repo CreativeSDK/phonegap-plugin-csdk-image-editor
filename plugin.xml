@@ -13,8 +13,9 @@
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.VIBRATE"/>
     </config-file>
-    <framework src="com.adobe.creativesdk:image:4.6.3+"/>
+    <framework src="com.adobe.creativesdk:image:4.8.3+"/>
     <framework src="com.localytics.android:library:3.8.0+"/>
+    <source-file src="src/android/AdobeAuthRedirectCredentialsApp.java" target-dir="src/com/adobe/phonegap/csdk"/>
     <source-file src="src/android/ImageEditor.java" target-dir="src/com/adobe/phonegap/csdk"/>
   </platform>
   <platform name="ios">

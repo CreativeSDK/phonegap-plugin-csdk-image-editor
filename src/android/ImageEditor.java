@@ -38,7 +38,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
-import com.adobe.creativesdk.aviary.internal.filters.ToolLoaderFactory;
+import com.adobe.creativesdk.aviary.internal.filters.ToolsFactory;
 import com.adobe.creativesdk.aviary.internal.headless.utils.MegaPixels;
 
 /**
@@ -168,7 +168,7 @@ public class ImageEditor extends CordovaPlugin {
 
     private void setToolsArray(AdobeImageIntent.Builder builder, JSONArray toolsArray) {
         try {
-            ToolLoaderFactory.Tools[] tools = createToolsArray(toolsArray);
+            ToolsFactory.Tools[] tools = createToolsArray(toolsArray);
             if (tools.length > 0) {
                 builder.withToolList(tools);
             }
@@ -177,78 +177,78 @@ public class ImageEditor extends CordovaPlugin {
         }
     }
 
-    private ToolLoaderFactory.Tools[] createToolsArray(JSONArray toolsArray) throws JSONException {
-        ArrayList<ToolLoaderFactory.Tools> tools = new ArrayList<ToolLoaderFactory.Tools>();
+    private ToolsFactory.Tools[] createToolsArray(JSONArray toolsArray) throws JSONException {
+        ArrayList<ToolsFactory.Tools> tools = new ArrayList<ToolsFactory.Tools>();
         for (int i=0; i<toolsArray.length(); i++) {
             int tool = toolsArray.getInt(i);
             if (tool >= 0 && tool <= 20) {
                 switch(tool) {
                     case SHARPNESS:
-                        tools.add(ToolLoaderFactory.Tools.SHARPNESS);
+                        tools.add(ToolsFactory.Tools.SHARPNESS);
                         break;
                     case EFFECTS:
-                        tools.add(ToolLoaderFactory.Tools.EFFECTS);
+                        tools.add(ToolsFactory.Tools.EFFECTS);
                         break;
                     case REDEYE:
-                        tools.add(ToolLoaderFactory.Tools.REDEYE);
+                        tools.add(ToolsFactory.Tools.REDEYE);
                         break;
                     case CROP:
-                        tools.add(ToolLoaderFactory.Tools.CROP);
+                        tools.add(ToolsFactory.Tools.CROP);
                         break;
                     case WHITEN:
-                        tools.add(ToolLoaderFactory.Tools.WHITEN);
+                        tools.add(ToolsFactory.Tools.WHITEN);
                         break;
                     case DRAW:
-                        tools.add(ToolLoaderFactory.Tools.DRAW);
+                        tools.add(ToolsFactory.Tools.DRAW);
                         break;
                     case STICKERS:
-                        tools.add(ToolLoaderFactory.Tools.STICKERS);
+                        tools.add(ToolsFactory.Tools.STICKERS);
                         break;
                     case TEXT:
-                        tools.add(ToolLoaderFactory.Tools.TEXT);
+                        tools.add(ToolsFactory.Tools.TEXT);
                         break;
                     case BLEMISH:
-                        tools.add(ToolLoaderFactory.Tools.BLEMISH);
+                        tools.add(ToolsFactory.Tools.BLEMISH);
                         break;
                     case MEME:
-                        tools.add(ToolLoaderFactory.Tools.MEME);
+                        tools.add(ToolsFactory.Tools.MEME);
                         break;
                     case ORIENTATION:
-                        tools.add(ToolLoaderFactory.Tools.ORIENTATION);
+                        tools.add(ToolsFactory.Tools.ORIENTATION);
                         break;
                     case ENHANCE:
-                        tools.add(ToolLoaderFactory.Tools.ENHANCE);
+                        tools.add(ToolsFactory.Tools.ENHANCE);
                         break;
                     case FRAMES:
-                        tools.add(ToolLoaderFactory.Tools.FRAMES);
+                        tools.add(ToolsFactory.Tools.FRAMES);
                         break;
                     case SPLASH:
-                        tools.add(ToolLoaderFactory.Tools.SPLASH);
+                        tools.add(ToolsFactory.Tools.SPLASH);
                         break;
                     case FOCUS:
-                        tools.add(ToolLoaderFactory.Tools.FOCUS);
+                        tools.add(ToolsFactory.Tools.FOCUS);
                         break;
                     case BLUR:
-                        tools.add(ToolLoaderFactory.Tools.BLUR);
+                        tools.add(ToolsFactory.Tools.BLUR);
                         break;
                     case VIGNETTE:
-                        tools.add(ToolLoaderFactory.Tools.VIGNETTE);
+                        tools.add(ToolsFactory.Tools.VIGNETTE);
                         break;
                     case LIGHTING:
-                        tools.add(ToolLoaderFactory.Tools.LIGHTING);
+                        tools.add(ToolsFactory.Tools.LIGHTING);
                         break;
                     case COLOR:
-                        tools.add(ToolLoaderFactory.Tools.COLOR);
+                        tools.add(ToolsFactory.Tools.COLOR);
                         break;
                     case OVERLAYS:
-                        tools.add(ToolLoaderFactory.Tools.OVERLAYS);
+                        tools.add(ToolsFactory.Tools.OVERLAYS);
                         break;
                     case ADJUST:
-                        tools.add(ToolLoaderFactory.Tools.ADJUST);
+                        tools.add(ToolsFactory.Tools.ADJUST);
                         break;
                 }
             }
         }
-        return tools.toArray(new ToolLoaderFactory.Tools[tools.size()]);
+        return tools.toArray(new ToolsFactory.Tools[tools.size()]);
     }
 }
