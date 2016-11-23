@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.adobe.phonegap.csdk.AdobeAuthCredentialsApp;
 
 import com.adobe.creativesdk.foundation.AdobeCSDKFoundation;
+import com.adobe.creativesdk.foundation.auth.IAdobeAuthClientCredentials;
 import com.adobe.creativesdk.aviary.IAdobeAuthRedirectCredentials;
 
 /**
